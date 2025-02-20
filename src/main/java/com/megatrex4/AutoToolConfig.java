@@ -10,7 +10,7 @@ import java.util.List;
 public class AutoToolConfig implements ConfigData {
 
     @Comment("The order of weapons to prioritize when switching tools.")
-    private List<String> weaponOrder = List.of("minecraft:sword", "minecraft:trident", "minecraft:axe");
+    private List<String> weaponOrder = List.of("sword", "trident", "axe");
 
     @Comment("Enable or disable debug mode.")
     private boolean debugMode = false;
@@ -18,7 +18,6 @@ public class AutoToolConfig implements ConfigData {
     @Comment("Additional settings for tool behavior.")
     private boolean enableAutoSwitch = true;
 
-    // Getters for configuration values
     public List<String> getWeaponOrder() {
         return weaponOrder;
     }
@@ -29,5 +28,9 @@ public class AutoToolConfig implements ConfigData {
 
     public boolean isEnableAutoSwitch() {
         return enableAutoSwitch;
+    }
+
+    public void setEnableAutoSwitch(boolean enable) {
+        this.enableAutoSwitch = enable;
     }
 }
