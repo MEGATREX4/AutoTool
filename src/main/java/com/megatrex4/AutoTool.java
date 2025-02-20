@@ -90,13 +90,11 @@ public class AutoTool implements ClientModInitializer {
 		float bestEfficiency = 0.0F;
 		boolean isWeaponRequired = false;
 
-		// Determine if the target is an entity
 		if (client.crosshairTarget.getType() == HitResult.Type.ENTITY) {
 			isWeaponRequired = true;
 		}
 
 		if (isWeaponRequired) {
-			// Weapon selection logic
 			for (String weaponType : config.getWeaponOrder()) {
 				for (int i = 0; i < 9; i++) {
 					ItemStack stack = client.player.getInventory().getStack(i);
@@ -113,7 +111,6 @@ public class AutoTool implements ClientModInitializer {
 			}
 		}
 
-		// If no weapon is required, fall back to tool selection for blocks
 		if (bestSlot == -1 && !isWeaponRequired) {
 			if (client.crosshairTarget.getType() == HitResult.Type.BLOCK) {
 				BlockHitResult blockHit = (BlockHitResult) client.crosshairTarget;
@@ -134,7 +131,6 @@ public class AutoTool implements ClientModInitializer {
 			}
 		}
 
-		// Switch to the determined slot if it's different from the current slot
 		if (bestSlot != -1 && bestSlot != client.player.getInventory().selectedSlot) {
 			client.player.getInventory().selectedSlot = bestSlot;
 			if (config.isDebugMode()) {
